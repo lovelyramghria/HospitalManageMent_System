@@ -1,0 +1,193 @@
+{% include "hospital/navbar.html" %}
+{% load widget_tweaks %}
+<head>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+     
+</head>
+<style>
+  * {
+    margin: 0%;
+    padding: 0%;
+  }
+  .hero {
+    background: url('https://journal.ahima.org/Portals/0/EasyDNNNews/2611/images/img-_iStock-1464559389-third_party_data-1000-360-c-C-97.jpg') center/cover no-repeat;
+    height: 65vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-align: center;
+    background-blend-mode: darken;
+    background-color: rgba(0, 0, 0, 0.4);
+   
+  }
+  .hero h1 { font-size: 3rem; font-weight: 700; }
+  .hero p { font-size: 1.5rem; }
+  .container1 {
+    justify-content: center;
+    text-align: center;
+    margin: 2px 240px;
+    padding: 40px;
+  }
+  h5 { float: left; }
+  .card-header button { float: right; }
+</style>
+</head>
+
+<body>
+  <section class="hero">
+    <div>
+      <h1> Our Service</h1>
+      <p>Quality Care, Trusted Doctors, Modern Facilities</p>
+    </div>
+  </section>
+  <br>
+  <div class="container1">
+    <div id="accordion">
+     <div>
+       <h1>Available Medical Test </h1>
+     </div>
+     <br>
+      {% for service in page_obj %}
+      <div class="card">
+        <div class="card-header" id="heading{{ service.id }}">
+          <h5 class="mb-0">
+            {{ service.services_name }} (₹{{ service.cost }})
+          </h5>
+          <button class="btn btn-link" data-toggle="collapse" data-target="#collapse{{ service.id }}" aria-expanded="false"
+            aria-controls="collapse{{ service.id }}">
+            <i class="material-icons">add</i>
+          </button>
+        </div>
+        <div id="collapse{{ service.id }}" class="collapse" aria-labelledby="heading{{ service.id }}" data-parent="#accordion">
+          <div class="card-body">
+            <form method="POST">
+              {% csrf_token %}
+              <div class="mb-3 mt-3">
+                <input type="text" class="form-control" placeholder="Enter patient Name" name="name">
+              </div>
+              <div class="mb-3">
+                <input type="text" class="form-control" placeholder="Enter age" name="age">
+              </div>
+              
+              <div class="mb-3 mt-3">
+                <select class="form-control" name="doctor" required>
+                    <option value="">Select Doctor</option>
+                    {% for doctors in doctors %}
+                        <option value="{{ doctors.id }}">{{ doctors.user }} ({{ doctors.department }})</option>
+                    {% endfor %}
+                </select>
+
+              </div>
+              <div class="mb-3">
+                <input type="date" class="form-control" name="date">
+              </div>
+              <div class="mb-3">
+                <input type="hidden" value="{{ service.services_name }}" name="services">
+              </div>
+                
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+
+  <!-- ✅ Pagination -->
+  <nav aria-label="Page navigation">
+    <ul class="pagination justify-content-center">
+      {% if page_obj.has_previous %}
+        <li class="page-item">
+          <a class="page-link" href="?page=1">First</a>
+        </li>
+        <li class="page-item">
+          <a class="page-link" href="?page={{ page_obj.previous_page_number }}">Previous</a>
+        </li>
+      {% endif %}
+
+      {% for num in page_obj.paginator.page_range %}
+        {% if page_obj.number == num %}
+          <li class="page-item active">
+            <a class="page-link" href="?page={{ num }}">{{ num }}</a>
+          </li>
+        {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+          <li class="page-item">
+            <a class="page-link" href="?page={{ num }}">{{ num }}</a>
+          </li>
+        {% endif %}
+      {% endfor %}
+
+      {% if page_obj.has_next %}
+        <li class="page-item">
+          <a class="page-link" href="?page={{ page_obj.next_page_number }}">Next</a>
+        </li>
+        <li class="page-item">
+          <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}">Last</a>
+        </li>
+      {% endif %}
+    </ul>
+  </nav>
+
+
+   <!-- <section class="py-5" style="background-color: #e7ebef;">
+    <div class="container text-center">
+      <h2 class="mb-4">Our Services</h2>
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="card service-card p-3">
+            <img src="https://img.icons8.com/color/96/000000/medical-doctor.png" class="mx-auto" alt="doctor">
+            <h5 class="mt-3">General Checkup</h5>
+            <p>Comprehensive health checkups for all ages.</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card service-card p-3">
+            <img src="https://img.icons8.com/color/96/000000/heart-with-pulse.png" class="mx-auto" alt="cardiology">
+            <h5 class="mt-3">Cardiology</h5>
+            <p>Expert care for your heart and vascular  </p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card service-card p-3">
+            <img src="https://img.icons8.com/color/96/000000/stethoscope.png" class="mx-auto" alt="diagnostics">
+            <h5 class="mt-3">Diagnostics</h5>
+            <p>Advanced diagnostic facilities and lab tests.</p>
+          </div>
+        </div>
+          <div class="col-md-4">
+          <div class="card service-card p-3">
+            <img src="https://img.icons8.com/color/96/000000/stethoscope.png" class="mx-auto" alt="diagnostics">
+            <h5 class="mt-3">Diagnostics</h5>
+            <p>Advanced diagnostic facilities and lab tests.</p>
+          </div>
+        </div>
+          <div class="col-md-4">
+          <div class="card service-card p-3">
+            <img src="https://img.icons8.com/color/96/000000/stethoscope.png" class="mx-auto" alt="diagnostics">
+            <h5 class="mt-3">Diagnostics</h5>
+            <p>Advanced diagnostic facilities and lab tests.</p>
+          </div>
+        </div>
+          <div class="col-md-4">
+          <div class="card service-card p-3">
+            <img src="https://img.icons8.com/color/96/000000/stethoscope.png" class="mx-auto" alt="diagnostics">
+            <h5 class="mt-3">Diagnostics</h5>
+            <p>Advanced diagnostic facilities and lab tests.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section> -->
+  
+
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script> -->
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+</body>
+</html>

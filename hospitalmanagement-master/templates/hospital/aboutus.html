@@ -1,0 +1,187 @@
+{% extends 'hospital/homebase.html' %}
+{% load static %}
+
+{% block content %}
+<head>
+  <style>
+    .about-hero {
+      background: url('{% static "images/about.jpg" %}') center/cover no-repeat;
+      min-height:65vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-align: center;
+      background-blend-mode: darken;
+      background-color: rgba(0, 0, 0, 0.5);
+      padding: 2rem;
+    }
+    .about-hero h1 {
+      font-size: 3.5rem;
+      font-weight: 700;
+    }
+    .about-hero p{
+      font-size: 1.3rem;
+    }
+    .section {
+      padding: 4rem 2rem;
+      background-color: white;
+    }
+    .section h2 {
+      font-size: 2.9rem;
+      margin-bottom: 1rem;
+       
+    }
+    .section p {
+      max-width: 800px;
+      line-height: 1.6;
+      font-size: 1.2rem;
+
+    }
+    .welcome-section .welcome-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  flex-wrap: wrap; /* for responsiveness */
+}
+
+.welcome-text {
+  flex: 1;
+}
+
+.welcome-image {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.welcome-image img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+    /* responsive tweaks */
+    @media (max-width: 768px) {
+      .about-hero h1 {
+        font-size: 2.2rem;
+      }
+      .section {
+        padding: 2rem 1rem;
+      }
+      .section h2 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+
+<section class="about-hero">
+  <div>
+    <h1>About BBMB Hospital Talwara</h1>
+    <p> Quality Care, Trusted Doctors, Modern Facilities</p>
+  </div>
+</section>
+<section class="section welcome-section">
+  <div class="welcome-content">
+    <div class="welcome-text">
+      <h2 style="color:#1B3C74;">Welcome To Hospital</h2>
+      <p>
+        Welcome to our new website. We encourage you to find out more about the values and vision that guides us,
+        the services and programs we offer, the indicators that ensure our continued accountability and transparency,
+        and the news and events that matter most to you. It is the place where you will find information on career
+        opportunities with HMH and be able to access general healthcare information to keep you well informed.  
+        India Hospital has a proud tradition of care. For Last so many years, India Hospital has cared for the people
+        of Lucknow, surrounding communities, and beyond, being a significant player within the District. Residing in
+        the heart of a beautiful cottage country on the shores of the Gomti River, we offer healthcare not only to our
+        community residents but to the many visitors who frequent our beautiful area year round.  
+        Vision
+      </p>
+    </div>
+    <div class="welcome-image">
+      <img src="{% static 'images/adminpropic.png' %}" alt="Hospital" />
+    </div>
+  </div>
+</section>
+
+<section class="section ">
+  <h2 style="color:#1B3C74;">Why Choose Us</h2>
+  <p>Because we combine expert care, cutting-edge facilities, affordable pricing, and a patient-first philosophy. Safety, satisfaction, comfort — for us, these are more than words — they are the heart of our service.</p>
+</section>
+
+{% endblock content %}
+
+
+
+
+
+
+
+
+
+
+
+<!-- <!DOCTYPE html>
+{% load static %}
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>PyCoders Solitaire Infosys Pvt. Ltd</title>
+  <style media="screen">
+    .jumbotron {
+      margin-top: 0px;
+      margin-bottom: 0px;
+    }
+
+    .jumbotron h1 {
+      text-align: center;
+    }
+
+    .alert {
+      margin: 0px;
+    }
+  </style>
+  <title>PyCoders Solitaire Infosys Pvt. Ltd</title>
+</head>
+
+<body>
+  {% include "hospital/navbar.html" %}
+  <br><br>
+  <center>
+    <h3 class='alert alert-success' style="margin-bottom:0px;">About Us !</h3>
+  </center>
+  <div class="jumbotron" style="margin-bottom: 0px;margin-top: 0px;">
+    <h1 class="display-4"></h1>
+    
+    <p class="lead">Delivering great work experiences to our clients is what we aim at.
+      Solitaire Infosys Pvt. Ltd. is an acclaimed IT service provider contributing its 
+      part in the development of many businesses around the globe. We socialize with our 
+      clients to get a superior cognizance of their business and requirements and help them
+       in fabricating websites and applications for their business. Founded in 2011 by a dynamic 
+       duo with the same aim and zeal, we have come a long way in satisfying our clients.
+      We are serving our clients with the world-class services for more than seven years now.
+       The clients are delivered with the best IT solutions after we have developed a great 
+       understanding of their business and requirements. Our team works on the client projects 
+       like its own and that is the reason why we hold the edge in the league.
+      With every project that we deliver, we deliver our respect, creativity, quality, 
+      transparency, and teamwork to our clients. We have the experience, expertise, 
+      and capabilities to enable organizations to accelerate their service processes 
+      in every possible way. We are known for our excellent customer satisfaction, 
+      cost-effectiveness, and innovative skills that are unparalleled.</p>
+    <hr class="my-4">
+    <p>Explore our Website.
+
+    </p>
+    <p class="lead">
+      <a class="btn btn-primary btn-lg" href="/" role="button">HOME</a>
+    </p>
+  </div>
+  {% include "hospital/footer.html" %}
+</body>
+
+</html> -->
+
+ 

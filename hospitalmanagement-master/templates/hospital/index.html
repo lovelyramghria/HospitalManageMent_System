@@ -1,0 +1,161 @@
+{% extends 'hospital/homebase.html' %}
+{% load static %}
+
+{% block content %}
+<head>
+  <style>
+    .hero {
+      background: url('https://images.unsplash.com/photo-1586773860418-d37222d8fce3') center/cover no-repeat;
+      min-height: 65vh; /* adaptive instead of fixed height */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-align: center;
+      background-blend-mode: darken;
+      background-color: rgba(0, 0, 0, 0.4);
+      padding: 2rem; /* adds breathing room on mobile */
+    }
+
+    .hero h1 {
+      font-size: 3.5rem;
+      font-weight: 700;
+      /* color: #1B3C74; */
+    }
+
+    .hero p {
+      font-size: 1.25rem;
+      margin-top: 1rem;
+    }
+
+     
+    
+    /* Responsive typography */
+    @media (max-width: 992px) {
+      .hero h1 {
+        font-size: 3.5rem;
+      }
+      .hero p {
+        font-size: 1.1rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .hero {
+        min-height: 50vh;
+        padding: 1.5rem;
+      }
+      .hero h1 {
+        font-size: 2rem;
+      }
+      .hero p {
+        font-size: 1rem;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .hero {
+        min-height: 45vh;
+        padding: 1rem;
+      }
+      .hero h1 {
+        font-size: 1.6rem;
+      }
+      .hero p {
+        font-size: 0.9rem;
+      }
+      .hero a.btn {
+        font-size: 0.9rem;
+        padding: 0.5rem 1rem;
+      }
+    }
+  </style>
+</head>
+<section class="hero">
+  <div>
+    <h1>Welcome To BBMB Hospital Talwara</h1>
+    <p>Quality Care, Trusted Doctors, Modern Facilities</p>
+    <a href="/patientclick" class="btn btn-primary btn-lg mt-3">Book Appointment</a>
+  </div>
+</section>
+
+<br>
+<section class="py-5 bg-light">
+    <div class="container text-center">
+      <h2 class="mb-4" style="color:#1B3C74;">Meet Our Doctors</h2>
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="card p-3">
+            <img src="https://randomuser.me/api/portraits/men/32.jpg" class="rounded-circle mx-auto" width="120" alt="">
+            <h5 class="mt-3">Dr. Rajesh Kumar</h5>
+            <p>Cardiologist</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card p-3">
+            <img src="https://randomuser.me/api/portraits/women/44.jpg" class="rounded-circle mx-auto" width="120" alt="">
+            <h5 class="mt-3">Dr. Neha Sharma</h5>
+            <p>Pediatrician</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card p-3">
+            <img src="https://randomuser.me/api/portraits/men/65.jpg" class="rounded-circle mx-auto" width="120" alt="">
+            <h5 class="mt-3">Dr. Aman Verma</h5>
+            <p>Neurologist</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="py-5" style="background-color: #e7ebef;">
+    <div class="container text-center">
+      <h2 class="mb-4">Our Services</h2>
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="card service-card p-3">
+            <img src="https://img.icons8.com/color/96/000000/medical-doctor.png" class="mx-auto" alt="doctor">
+            <h5 class="mt-3">General Checkup</h5>
+            <p>Comprehensive health checkups for all ages.</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card service-card p-3">
+            <img src="https://img.icons8.com/color/96/000000/heart-with-pulse.png" class="mx-auto" alt="cardiology">
+            <h5 class="mt-3">Cardiology</h5>
+            <p>Expert care for your heart and vascular  </p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card service-card p-3">
+            <img src="https://img.icons8.com/color/96/000000/stethoscope.png" class="mx-auto" alt="diagnostics">
+            <h5 class="mt-3">Diagnostics</h5>
+            <p>Advanced diagnostic facilities and lab tests.</p>
+          </div>
+        </div>
+          <div class="col-md-4">
+          <div class="card service-card p-3">
+            <img src="https://img.icons8.com/color/96/000000/stethoscope.png" class="mx-auto" alt="diagnostics">
+            <h5 class="mt-3">Diagnostics</h5>
+            <p>Advanced diagnostic facilities and lab tests.</p>
+          </div>
+        </div>
+          <div class="col-md-4">
+          <div class="card service-card p-3">
+            <img src="https://img.icons8.com/color/96/000000/stethoscope.png" class="mx-auto" alt="diagnostics">
+            <h5 class="mt-3">Diagnostics</h5>
+            <p>Advanced diagnostic facilities and lab tests.</p>
+          </div>
+        </div>
+          <div class="col-md-4">
+          <div class="card service-card p-3">
+            <img src="https://img.icons8.com/color/96/000000/stethoscope.png" class="mx-auto" alt="diagnostics">
+            <h5 class="mt-3">Diagnostics</h5>
+            <p>Advanced diagnostic facilities and lab tests.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+<br><br><br>
+{% endblock content %}

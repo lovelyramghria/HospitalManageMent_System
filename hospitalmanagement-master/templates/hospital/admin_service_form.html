@@ -1,0 +1,114 @@
+{% extends 'hospital/admin_base.html' %}
+{% load static %}
+{% block content %}
+<br><br>
+<style>
+    body {
+        /* color: #aa082e; */
+        background-color: #eeeff5;
+        font-family: 'Roboto', sans-serif;
+    }
+
+    a:link {
+        text-decoration: none;
+
+    }
+
+    .note {
+        text-align: center;
+        height: 80px;
+        background: -webkit-linear-gradient(left, #0072ff, #8811c5);
+        color: #fff;
+        font-weight: bold;
+        line-height: 80px;
+    }
+
+    .form-content {
+        padding: 5%;
+        border: 1px solid #45494d;
+        margin-bottom: 2%;
+    }
+
+    .form-control {
+        border-radius: 1.5rem;
+    }
+
+    .btnSubmit {
+        border: none;
+        border-radius: 1.5rem;
+        padding: 1%;
+        width: 20%;
+        cursor: pointer;
+        background: #0062cc;
+        color: #fff;
+    }
+
+    #icon {
+        color: black;
+    }
+
+    #iconn {
+        color: black;
+    }
+</style>
+
+<form method="post">
+    {% csrf_token %}
+    <div class="container register-form">
+        <div class="form">
+            <div class="note">
+                <p>ADD SERVICES </p>
+            </div>
+            <div class="form-content">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Services Name" name="services_name">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Cost" name="cost">
+                        </div>
+                    </div>
+                </div>
+                <button type="submit" class="btnSubmit">Add Service</button>
+            </div>
+        </div>
+    </div>
+
+</form>
+<div class="panel panel-primary col-md-5" style="margin-left:2%;">
+    <div class="panel-heading" style="text-align:center;">
+        <h6 class="panel-title">ADD SERVICE </h6>
+    </div>
+
+    <table class="table table-hover" id="dev-table">
+        <thead>
+            <tr>
+                <th>S.No</th>
+                <th>services_name</th>
+                <th>Cost</th>
+                <th>Update</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        {% for services in services %}
+        <tbody>
+            <tr>
+                <td>{{forloop.counter}}</td>
+                <td>{{services.services_name}}</td>
+                <td>{{services.cost}}</td>
+                <td>
+                    <a href="{% url 'update_services' services.id %}">
+                        <i class="fa fa-edit" , style="font-size:24px"></i>
+                    </a>
+
+                </td>
+                <td> <a href="{% url 'delete_services' services.id %}"><i class="fa fa-trash-o" id="icon"></i></a></td>
+            </tr>
+        </tbody>
+        {% endfor %}
+    </table>
+</div>
+{% endblock content %}
